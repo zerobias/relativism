@@ -2,6 +2,11 @@
 
 Deep JSON normalization
 
+
+    npm install --save relativism
+
+
+
 ```javascript
 
 import { types, normalize, denormalize } from 'relativism'
@@ -50,9 +55,9 @@ Normalized object
 
 ```json
 {
-  "entities": [ 0 ],
+  "entities": 0,
   "index": {
-    "something": [
+    "Something": [
       "abc",
       "def",
       "jkl",
@@ -61,7 +66,7 @@ Normalized object
       "stu",
       "ghi"
     ],
-    "pair": [{
+    "Pair": [{
         "foo": 0,
         "bar": 1
       }, {
@@ -72,7 +77,7 @@ Normalized object
         "bar": 5,
         "field": "other"
       }],
-    "schema": [{
+    "Schema": [{
       "pair": 0,
       "arrays": {
         "many": [ 6 ],
