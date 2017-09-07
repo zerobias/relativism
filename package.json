@@ -1,0 +1,53 @@
+{
+  "name": "relativism",
+  "version": "0.1.0",
+  "description": "Deep JSON normalization",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "scripts": {
+    "types": "flow-copy-source src lib && flow-copy-source src es",
+    "prepublish": "npm run rebuild:es && npm run rebuild:cjs && npm run types",
+    "test": "jest --config=jest.json",
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "cross-env BABEL_ENV=commonjs babel src/ -d lib -s --ignore __tests__",
+    "build:es": "babel src/ -d es -s --ignore __tests__",
+    "clean": "npm run clean:es && npm run clean:cjs",
+    "clean:cjs": "rimraf lib/",
+    "clean:es": "rimraf es/",
+    "rebuild:cjs": "npm run clean:cjs & npm run build:cjs",
+    "rebuild:es": "npm run clean:es & npm run build:es"
+  },
+  "author": "Zero Bias",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.24.1"
+  },
+  "files": [
+    "src",
+    "lib",
+    "index.flow.js",
+    "es",
+    ".flowconfig"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-minify-dead-code-elimination": "^0.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-block-scoping": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.6.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-flowtype": "^2.35.1",
+    "eslint-plugin-jest": "^21.0.0",
+    "flow-bin": "^0.54.1",
+    "flow-copy-source": "^1.2.1",
+    "jest": "^21.0.1",
+    "rimraf": "^2.6.1"
+  }
+}
